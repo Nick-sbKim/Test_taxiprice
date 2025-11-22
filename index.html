@@ -12,8 +12,7 @@
         /* ********************************************** */
         /* ✅ 상수 정의 */
         :root {
-            --label-width: 145px; 
-            --input-gap: 10px;    
+            --input-gap: 5px;    /* 입력 필드와 라벨 사이 간격 줄임 */
             --input-padding-vertical: 12px; 
             --mobile-breakpoint: 600px; 
         }
@@ -84,7 +83,6 @@
         
         /* 모든 라벨 스타일 */
         .input-group label {
-            width: var(--label-width); 
             flex-shrink: 0;
             font-size: 1.25em; 
             font-weight: 800; 
@@ -143,7 +141,7 @@
             flex-grow: 1; 
             position: relative; 
             display: flex;
-            align-items: center;
+            align-items: center; /* ⭐ 모든 요소를 수직 중앙 정렬 */
             
             padding: var(--input-padding-vertical) 15px; 
             border: 1px solid #B3E5FC; 
@@ -163,6 +161,7 @@
             white-space: nowrap;
             z-index: 10; 
             font-size: 1em; 
+            line-height: 1; /* ⭐ 텍스트의 라인 높이 조정 */
         }
         
         /* 실제 숫자 입력 필드 (#price) 스타일 */
@@ -189,34 +188,36 @@
             padding-right: 50px !important; 
             
             text-align: center;
+            line-height: calc(24px + var(--input-padding-vertical) * 2); /* ⭐ 입력 텍스트 수직 정렬을 위해 라인 높이 강제 조정 */
+            /* (24px는 font-size 1.1em일 때 대략적인 텍스트 높이) */
         }
-        
+
         /* ********************************************** */
 
         /* 개인정보 동의 체크박스 영역 */
         .consent-group {
             display: flex;
             align-items: center;
-            margin-top: 25px; /* ⭐ 이전 간격 복구 */
-            margin-bottom: 15px; /* ⭐ 이전 간격 복구 */
+            margin-top: 25px; 
+            margin-bottom: 15px; 
             background-color: #E1F5FE; 
-            padding: 15px; /* ⭐ 이전 패딩 복구 */
+            padding: 15px; 
             border-radius: 8px; 
             border: 1px solid #B3E5FC;
         }
 
         /* 체크박스 스타일 */
         #consent {
-            min-width: 24px; /* ⭐ 이전 크기 복구 */
+            min-width: 24px; 
             min-height: 24px; 
-            margin-right: 15px; /* ⭐ 이전 마진 복구 */
+            margin-right: 15px; 
             accent-color: #00BFFF; 
             cursor: pointer;
         }
 
         /* 동의 라벨 글씨 크기 조절 */
         .consent-label {
-            font-size: 1.1em; /* ⭐ 이전 폰트 크기 복구 */
+            font-size: 1.0em; 
             margin: 0;
             font-weight: 500; 
             line-height: 1.4;
@@ -228,14 +229,14 @@
         .consent-details {
             background-color: #F8FFFF;
             color: #444;
-            padding: 15px; /* ⭐ 이전 패딩 복구 */
+            padding: 15px; 
             border-radius: 6px;
             margin-top: -5px; 
-            margin-bottom: 30px; /* ⭐ 이전 간격 복구 */
-            height: 90px; /* ⭐ 이전 높이 복구 */
+            margin-bottom: 30px; 
+            height: 90px; 
             overflow-y: scroll; 
             border: 1px solid #B3E5FC;
-            font-size: 0.9em; /* ⭐ 이전 폰트 크기 복구 */
+            font-size: 0.9em; 
             line-height: 1.5;
             display: block !important; 
         }
@@ -243,27 +244,27 @@
         /* 등록 버튼 설정 */
         #submitBtn {
             width: 100%;
-            padding: 22px; /* ⭐ 이전 패딩 복구 */
+            padding: 22px; 
             background-color: #0277BD; 
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 1.8em; /* ⭐ 이전 폰트 크기 복구 */
+            font-size: 1.8em; 
             font-weight: 800; 
             transition: background-color 0.3s ease, transform 0.1s ease;
             letter-spacing: 1px;
-            margin-top: 10px; /* ⭐ 이전 간격 복구 */
+            margin-top: 10px; 
         }
 
         /* ********************************************** */
-        /* ✅ 모바일 반응형 디자인 (Screen Width <= 600px) - 레이아웃 복구에 영향 없는 부분만 유지 */
+        /* ✅ 모바일 반응형 디자인 (Screen Width <= 600px) */
         @media (max-width: var(--mobile-breakpoint)) {
             .container {
                 padding: 15px 15px; 
             }
 
-            /* ⭐ 라벨과 입력 필드가 세로로 쌓이도록 변경 (박스 넘침 해결) */
+            /* 라벨과 입력 필드가 세로로 쌓이도록 변경 (유지) */
             .input-group {
                 flex-direction: column;
                 align-items: flex-start; 
@@ -281,6 +282,11 @@
                 gap: 0; 
             }
             
+            /* 동의 라벨 폰트 크기 모바일에서 추가 조정 */
+            .consent-label {
+                font-size: 0.95em; 
+            }
+
             /* 입력 필드 및 가격 박스 폰트 크기 조정 (유지) */
             .price-box, 
             .input-field-wrapper input[type="text"] {
@@ -290,9 +296,9 @@
             /* 실제 숫자 입력 필드 폰트 크기 (유지) */
             #price {
                 font-size: 1.1em !important; 
+                /* ⭐ 모바일에서도 라인 높이 조정 적용 */
+                line-height: calc(24px + var(--input-padding-vertical) * 2) !important; 
             }
-
-            /* 버튼/동의 영역은 모바일에서도 넓게 보이도록 CSS를 복구했음 */
         }
     </style>
 </head>
