@@ -51,17 +51,17 @@
             border: 2px solid #81D4FA; 
         }
 
-        /* ⭐ 제목 (문구 변경 및 폰트 조정) */
+        /* 제목 */
         h1 {
             text-align: center;
             margin-bottom: 10px; 
             font-size: 1.7em; 
             font-weight: 800; 
             color: #0277BD; 
-            line-height: 1.2; /* ⭐ 줄 간격 줄여 한 줄 표시 유도 */
+            line-height: 1.2; 
         }
         
-        /* ⭐ 설명 문구 스타일 (문구 변경 및 폰트 조정) */
+        /* 설명 문구 스타일 */
         .description {
             text-align: center;
             font-size: 1.0em; 
@@ -111,14 +111,14 @@
             border: 1px solid #B3E5FC; 
             border-radius: 8px; 
             box-sizing: border-box;
-            font-size: 1.1em; /* ⭐ 입력 텍스트 크기 통일 */
+            font-size: 1.1em; 
             color: #333;
             background-color: #F8FFFF; 
             font-weight: normal; 
             text-align: left;
         }
 
-        /* ⭐ 플레이스홀더 폰트 스타일 통일 (크기 0.85em 유지) */
+        /* 플레이스홀더 폰트 스타일 */
         ::placeholder { 
             font-weight: normal; 
             color: #A9A9A9; 
@@ -130,11 +130,10 @@
             color: #A9A9A9;
             font-size: 0.85em; 
         }
-        /* ... 기타 브라우저 접두사 폰트 크기는 0.85em 유지 ... */
         
-        /* ⭐ 판매 희망금액 (희망가 입력) Placeholder 크기만 더 줄임 */
+        /* 판매 희망금액 (희망가 입력) Placeholder 크기만 더 줄임 */
         #price::placeholder {
-            font-size: 0.7em !important; /* ⭐ 희망가 입력 텍스트 크기 추가 감소 */
+            font-size: 0.7em !important; 
         }
 
         /* ********************************************** */
@@ -153,7 +152,7 @@
             background-color: #F8FFFF; 
             
             justify-content: space-between; 
-            font-size: 1.1em; /* ⭐ 입력 필드 폰트 크기 통일 */
+            font-size: 1.1em; 
             width: 100%; 
         }
         
@@ -166,7 +165,7 @@
             font-size: 1em; 
         }
         
-        /* ⭐ 실제 숫자 입력 필드 (#price) 스타일 */
+        /* 실제 숫자 입력 필드 (#price) 스타일 */
         #price {
             border: none !important;
             background: transparent !important;
@@ -182,7 +181,7 @@
             box-sizing: border-box;
             z-index: 5; 
             
-            font-size: 1.1em; /* ⭐ 입력 숫자 폰트 크기 통일 */
+            font-size: 1.1em; 
             font-weight: normal;   
             color: #333;           
             
@@ -194,40 +193,77 @@
         
         /* ********************************************** */
 
-        /* 개인정보 동의 영역 (간격 조정) */
+        /* 개인정보 동의 체크박스 영역 */
         .consent-group {
-            margin-top: 20px; 
-            margin-bottom: 10px; 
-            padding: 12px; 
+            display: flex;
+            align-items: center;
+            margin-top: 25px; /* ⭐ 이전 간격 복구 */
+            margin-bottom: 15px; /* ⭐ 이전 간격 복구 */
+            background-color: #E1F5FE; 
+            padding: 15px; /* ⭐ 이전 패딩 복구 */
+            border-radius: 8px; 
+            border: 1px solid #B3E5FC;
+        }
+
+        /* 체크박스 스타일 */
+        #consent {
+            min-width: 24px; /* ⭐ 이전 크기 복구 */
+            min-height: 24px; 
+            margin-right: 15px; /* ⭐ 이전 마진 복구 */
+            accent-color: #00BFFF; 
+            cursor: pointer;
         }
 
         /* 동의 라벨 글씨 크기 조절 */
         .consent-label {
-            font-size: 1.05em; 
+            font-size: 1.1em; /* ⭐ 이전 폰트 크기 복구 */
+            margin: 0;
+            font-weight: 500; 
+            line-height: 1.4;
+            color: #004D40;
+            flex-grow: 1; 
         }
 
-        /* 개인정보 상세 내용 박스 (간격 조정) */
+        /* 개인정보 상세 내용 박스 */
         .consent-details {
-            padding: 10px; 
-            margin-bottom: 25px; 
-            height: 80px; 
-            font-size: 0.85em; 
+            background-color: #F8FFFF;
+            color: #444;
+            padding: 15px; /* ⭐ 이전 패딩 복구 */
+            border-radius: 6px;
+            margin-top: -5px; 
+            margin-bottom: 30px; /* ⭐ 이전 간격 복구 */
+            height: 90px; /* ⭐ 이전 높이 복구 */
+            overflow-y: scroll; 
+            border: 1px solid #B3E5FC;
+            font-size: 0.9em; /* ⭐ 이전 폰트 크기 복구 */
+            line-height: 1.5;
+            display: block !important; 
         }
         
         /* 등록 버튼 설정 */
         #submitBtn {
-            padding: 18px; 
-            font-size: 1.6em; 
-            margin-top: 5px; 
+            width: 100%;
+            padding: 22px; /* ⭐ 이전 패딩 복구 */
+            background-color: #0277BD; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.8em; /* ⭐ 이전 폰트 크기 복구 */
+            font-weight: 800; 
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            letter-spacing: 1px;
+            margin-top: 10px; /* ⭐ 이전 간격 복구 */
         }
 
         /* ********************************************** */
-        /* ✅ 모바일 반응형 디자인 (Screen Width <= 600px) */
+        /* ✅ 모바일 반응형 디자인 (Screen Width <= 600px) - 레이아웃 복구에 영향 없는 부분만 유지 */
         @media (max-width: var(--mobile-breakpoint)) {
             .container {
                 padding: 15px 15px; 
             }
 
+            /* ⭐ 라벨과 입력 필드가 세로로 쌓이도록 변경 (박스 넘침 해결) */
             .input-group {
                 flex-direction: column;
                 align-items: flex-start; 
@@ -245,15 +281,18 @@
                 gap: 0; 
             }
             
-            /* 희망금액 박스 폰트 크기 조정 */
-            .price-box {
+            /* 입력 필드 및 가격 박스 폰트 크기 조정 (유지) */
+            .price-box, 
+            .input-field-wrapper input[type="text"] {
                 font-size: 1.1em;
             }
 
-            /* 실제 숫자 입력 필드 폰트 크기 */
+            /* 실제 숫자 입력 필드 폰트 크기 (유지) */
             #price {
                 font-size: 1.1em !important; 
             }
+
+            /* 버튼/동의 영역은 모바일에서도 넓게 보이도록 CSS를 복구했음 */
         }
     </style>
 </head>
