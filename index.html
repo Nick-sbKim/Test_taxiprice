@@ -12,8 +12,8 @@
         /* ********************************************** */
         /* ✅ 상수 정의 */
         :root {
-            --label-width: 110px;    /* 라벨 너비 축소 */
-            --input-gap: 10px;       /* 간격 미세 조정 */
+            --label-width: 110px;
+            --input-gap: 10px;
             --input-padding-vertical: 12px; 
             --mobile-breakpoint: 600px; 
         }
@@ -130,13 +130,7 @@
             font-size: 0.85em; 
         }
         
-        /* 판매 희망금액 (희망가 입력) Placeholder 크기만 더 줄임 */
-        #price::placeholder {
-            font-size: 0.7em !important; 
-        }
-
         /* ********************************************** */
-        
         /* ✅ 판매 희망금액 (단일 박스 통합 레이아웃) */
         .price-box {
             flex-grow: 1; 
@@ -191,17 +185,63 @@
             text-align: center;
             line-height: calc(24px + var(--input-padding-vertical) * 2); 
         }
+        
+        /* 판매 희망금액 (희망가 입력) Placeholder 크기만 더 줄임 */
+        #price::placeholder {
+            font-size: 0.7em !important; 
+        }
 
         /* ********************************************** */
+        /* ✅ 차량 번호 (서울 고정 박스) */
+        .car-number-box {
+            /* price-box와 동일한 외관 스타일 */
+            flex-grow: 1; 
+            position: relative; 
+            display: flex;
+            align-items: center; 
+            padding: var(--input-padding-vertical) 15px; 
+            border: 1px solid #B3E5FC; 
+            border-radius: 8px; 
+            box-sizing: border-box;
+            background-color: #F8FFFF; 
+            font-size: 1.1em; 
+            width: 100%; 
+        }
 
-        /* 개인정보 동의 체크박스 영역 (하늘색 박스) */
+        /* 서울 고정 텍스트 스타일 */
+        .car-number-box .city-unit {
+            font-weight: 800; 
+            color: #0277BD; 
+            white-space: nowrap;
+            z-index: 10; 
+            font-size: 1em; 
+            line-height: 1; 
+            padding-right: 10px; /* 고정 텍스트와 입력 필드 사이 간격 */
+        }
+
+        /* 실제 차량 번호 입력 필드 (#carNumber) 스타일 */
+        #carNumber {
+            /* 일반 input[type="text"] 스타일 재정의 */
+            border: none !important;
+            background: transparent !important;
+            outline: none !important;
+            padding: 0 !important;
+            text-align: left;
+            flex-grow: 1; 
+            font-size: 1.1em; 
+            font-weight: normal; 
+        }
+        
+        /* ********************************************** */
+
+        /* 개인정보 동의 체크박스 영역 (여백 축소) */
         .consent-group {
             display: flex;
             align-items: center;
-            margin-top: 15px; /* ⭐ 상단 마진 축소 (25px -> 15px) */
-            margin-bottom: 10px; /* ⭐ 하단 마진 축소 (15px -> 10px) */
+            margin-top: 15px; 
+            margin-bottom: 10px; 
             background-color: #E1F5FE; 
-            padding: 10px; /* ⭐ 패딩 축소 (15px -> 10px) */
+            padding: 10px; 
             border-radius: 8px; 
             border: 1px solid #B3E5FC;
         }
@@ -225,14 +265,14 @@
             flex-grow: 1; 
         }
 
-        /* 개인정보 상세 내용 박스 */
+        /* 개인정보 상세 내용 박스 (여백 축소) */
         .consent-details {
             background-color: #F8FFFF;
             color: #444;
-            padding: 10px 15px 15px; /* ⭐ 상단 패딩 축소 (15px -> 10px) */
+            padding: 10px 15px 15px; 
             border-radius: 6px;
             margin-top: -5px; 
-            margin-bottom: 20px; /* ⭐ 하단 마진 축소 (30px -> 20px) */
+            margin-bottom: 20px; 
             height: 90px; 
             overflow-y: scroll; 
             border: 1px solid #B3E5FC;
@@ -243,7 +283,7 @@
 
         /* 상세 내용 박스 내 첫번째 문단(제목)의 상단 여백 제거 */
         .consent-details p:first-child {
-            margin-top: 0; /* ⭐ 텍스트 상단 여백 제거 */
+            margin-top: 0; 
         }
         
         /* 등록 버튼 설정 */
@@ -258,8 +298,8 @@
             font-size: 1.8em; 
             font-weight: 800; 
             letter-spacing: 1px;
-            margin-top: 10px; /* ⭐ 상단 마진 축소 (20px -> 10px) */
-            margin-bottom: 5px; /* ⭐ 하단 마진 축소 */
+            margin-top: 10px; 
+            margin-bottom: 5px; 
         }
 
         /* ********************************************** */
@@ -287,18 +327,16 @@
                 gap: 0; 
             }
             
-            /* 동의 라벨 폰트 크기 모바일에서 추가 조정 */
             .consent-label {
                 font-size: 0.95em; 
             }
 
-            /* 입력 필드 및 가격 박스 폰트 크기 조정 (유지) */
             .price-box, 
+            .car-number-box, /* 모바일에서도 동일하게 적용 */
             .input-field-wrapper input[type="text"] {
                 font-size: 1.1em;
             }
 
-            /* 실제 숫자 입력 필드 폰트 크기 (유지) */
             #price {
                 font-size: 1.1em !important; 
                 line-height: calc(24px + var(--input-padding-vertical) * 2) !important; 
@@ -336,9 +374,14 @@
             </div>
 
             <div class="input-group">
-                <label for="carNumber">차량번호</label>
-                <div class="input-field-wrapper">
-                    <input type="text" id="carNumber" name="entry.1799002231" required placeholder="예시: 30아1234">
+                <label for="carNumber">차량번호</label> <div class="input-field-wrapper">
+                    <div class="car-number-box"> <span class="city-unit">서울</span> <input type="text" 
+                               id="carNumber" 
+                               name="entry.1799002231" 
+                               required 
+                               placeholder="30아1234 (지역 제외)"
+                               maxlength="7">
+                    </div>
                 </div>
             </div>
 
@@ -368,8 +411,7 @@
             
             <div class="consent-details">
                 <p><strong>[개인정보 수집 및 이용 동의 상세 내용]</strong></p>
-                <p>1. 수집 항목: 성함, 휴대폰 번호, 택시 면허번호, 판매희망금액</p>
-                <p>2. 수집 목적: 면허 시세 정보 확인 및 판매 상담 진행</p>
+                <p>1. 수집 항목: 성함, 휴대폰 번호, 차량번호, 판매희망금액</p> <p>2. 수집 목적: 면허 시세 정보 확인 및 판매 상담 진행</p>
                 <p>3. 보유 및 이용 기간: 동의일로부터 3년 (상담 종료 후 지체 없이 파기)</p>
                 <p>4. 동의 거부 시 불이익: 상기 개인정보 수집 및 이용에 동의하지 않을 경우, 희망금액 등록 및 상담이 제한될 수 있습니다.</p>
             </div>
@@ -418,4 +460,3 @@
     </script>
 </body>
 </html>
-
