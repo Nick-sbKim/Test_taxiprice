@@ -747,28 +747,50 @@ checkCompletion(this);
 });
 
 // ************************************************************
-// ✅ 최종 연동이 확인된 SUBMIT 이벤트 리스너 (데이터 누락 방지 로직 유지)
+// ✅ 로직 강화: submit 이벤트를 명시적으로 제어하여 데이터 누락 방지
 // ************************************************************
+
+// 폼의 최종 제출 이벤트 핸들러 (2단계 완료 시)
 document.getElementById('carForm').addEventListener('submit', function(event) {
     // 1. 폼의 기본 제출 동작을 즉시 막습니다.
     event.preventDefault(); 
 
-    // 🚀 2. 1단계 유효성 검사
+    // 🚀 2. 1단계 유효성 검사 (혹시 모를 우회 제출 방지)
     if (!validateStep1(true)) {
-        updateStep(1); // 1단계로 돌아감
+        updateStep(1); 
         alert('1단계 희망가격을 먼저 정확히 입력해주세요.');
         return;
     }
 
     // 🚀 3. 2단계 유효성 검사
     if (!validateStep2(true)) {
-        updateStep(2); // 2단계로 돌아감
+        updateStep(2); 
         // Alert은 validateStep2 내부에서 처리됨
         return;
     }
 
     // 🚀 4. 모든 검사 통과 후, 전송 직전에 Hidden 필드에 최종 값 설정
+    setHiddenFields();
     
+    // 5. 최종 제출 플래그 설정 후, 폼을 명시적으로 제출합니다.
+    submitted = true; 
+    this.submit(); 
+});
+
+
+// '다음 단계로' 버튼 클릭 시 Hidden 필드 값을 미리 설정 (1단계 완료 시)
+document.getElementById('nextBtn').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    if (validateStep1(false)) {
+        // 1단계 유효성 검사 통과 시, 1단계 Hidden 필드만 미리 설정
+        licensePriceHidden.value = `1억 ${licensePriceInput.value.trim()}만원`;
+        updateStep(2);
+    }
+});
+
+
+function setHiddenFields() {
     // 4-1. 희망가격 Hidden 필드 값 설정 (1억 [숫자]만원 형식)
     licensePriceHidden.value = `1억 ${licensePriceInput.value.trim()}만원`;
 
@@ -784,11 +806,7 @@ document.getElementById('carForm').addEventListener('submit', function(event) {
 
     // 4-4. 개인정보 동의 Hidden 필드 값 설정
     consentHidden.value = consentCheckbox.checked ? '예' : '아니오';
-    
-    // 5. 최종 제출 플래그 설정 후, 폼을 명시적으로 제출합니다.
-    submitted = true; 
-    this.submit(); // 폼을 명시적으로 재전송 (Hidden Field에 값이 확실히 채워진 후)
-});
+}
 
 
 function updateStep(step) {
@@ -807,11 +825,8 @@ window.scrollTo(0, 0);
 }
 
 function nextStep(step) {
-if (step === 1) {
-if (validateStep1(false)) {
-updateStep(2);
-}
-}
+// 이 함수는 'nextBtn' 이벤트 리스너로 대체되었으나, HTML onclick 속성 유지를 위해 남겨둠.
+// 실제 로직은 위쪽 document.getElementById('nextBtn').addEventListener에서 처리됨.
 }
 
 function prevStep(step) {
