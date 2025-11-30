@@ -342,62 +342,54 @@ border-radius: 0;
 box-sizing: border-box;
 padding: 0 5px 0 0;
 }
-
-/* 🟢 디자인 복구: 입력 필드를 표준적인 넓이로 복원 (flex-grow: 1 사용) */
 .unified-price-input input {
-    width: auto; /* flex-grow와 함께 사용 */
-    flex-grow: 1; /* 남은 공간을 차지하도록 설정 (이미지 02bf1c.png와 동일) */
-    min-width: 40px; 
-    
-    height: 100%;
-    border: 1px solid var(--input-border);
-    border-radius: 8px; /* 원래대로 복구 */
-    background-color: var(--input-default-bg);
-    padding: 0 3px; /* 원래대로 복구 */
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: 900;
-    box-sizing: border-box;
-    transition: all 0.2s;
+width: 30%;
+flex-grow: 0;
+min-width: 40px;
+height: 100%;
+border: 1px solid var(--input-border);
+border-radius: 8px;
+background-color: var(--input-default-bg);
+padding: 0 3px;
+text-align: center;
+font-size: 1.2em;
+font-weight: 900;
+box-sizing: border-box;
 }
-
-/* 입력 시 돋보기 효과 오버라이드 (일반적인 포커스 효과 유지) */
+/* 가격 입력 필드 포커스 시 돋보기 효과 재적용 */
 .unified-price-input input:focus {
-    font-size: 1.5em !important;
-    padding: 0 3px !important;
-    height: 100% !important;
-    line-height: 100% !important;
-    font-weight: 900 !important;
-    box-shadow: 0 0 10px rgba(25, 118, 210, 0.5);
-    background-color: var(--input-default-bg) !important;
+font-size: 1.5em !important;
+padding: 0 3px !important;
+height: 100% !important;
+line-height: 100% !important;
+font-weight: 900 !important;
+box-shadow: 0 0 10px rgba(25, 118, 210, 0.5); /* 쉐도우 추가 */
+background-color: var(--input-default-bg) !important;
 }
 
-/* 입력 완료 시 (일반적인 완료 스타일 유지) */
+/* 입력 완료 시 폰트 크기 조정 (희망가격 입력란) */
 .unified-price-input input.completed {
-    width: auto; /* 넓이 유지 */
-    min-width: 40px; 
-    padding: 0 3px;
-    background-color: var(--input-filled-bg) !important;
-    font-size: var(--price-text-font-size) !important;
-    font-weight: 900 !important;
+background-color: var(--input-filled-bg) !important;
+/* 1억 텍스트와 동일하게 키움 */
+font-size: var(--price-text-font-size) !important;
+font-weight: 900 !important;
 }
 
-
-/* 🟢 디자인 복구: '만원' 텍스트를 다시 보이도록 설정 */
 .unified-price-input .price-unit-text {
-    flex-shrink: 0;
-    height: 100%;
-    display: flex; /* 다시 보이도록 설정 */
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: var(--price-text-font-size);
-    color: black;
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    box-sizing: border-box;
-    padding: 0 0 0 5px;
+flex-shrink: 0;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 900;
+/* 만원 텍스트 폰트 크기 조정 */
+font-size: var(--price-text-font-size);
+color: black;
+background-color: transparent;
+border: none;
+border-radius: 0;
+box-sizing: border-box;
+padding: 0 0 0 5px;
 }
 
 /* 동의 섹션 (유지) */
@@ -491,7 +483,6 @@ margin-bottom: 0;
 .unified-price-input .price-fixed-text,
 .unified-price-input .price-unit-text { font-size: 1.0em; padding: 0 3px; }
 .unified-price-input input { font-size: 1.1em; }
-
 /* 모바일 포커스 시 돋보기 크기 조정 */
 .data-input-field:focus {
 font-size: 1.1em !important;
@@ -499,13 +490,8 @@ height: var(--base-field-height) !important;
 line-height: var(--base-field-height) !important;
 }
 .unified-price-input input:focus {
-    /* 모바일에서도 넓이 복구 스타일 유지 */
-    font-size: 1.2em !important;
-    padding: 0 3px !important;
-    width: auto;
-    min-width: 40px;
+font-size: 1.2em !important;
 }
-
 /* ✅ 모바일에서 완료된 필드 폰트 크기 조정 */
 .data-input-field.completed {
 font-size: 1.1em !important;
@@ -528,10 +514,11 @@ target="hidden_iframe">
 <input type="hidden" name="fbzx" value="3762433657792349989">
 <input type="hidden" name="submissionTimestamp" value="-1">
 
-<input type="hidden" id="phoneHidden" name="entry.1863849812" value="">
-<input type="hidden" id="carNumberHidden" name="entry.439516004" value="">
-<input type="hidden" id="consentHidden" name="entry.1323416282" value="" required>
-<input type="hidden" name="entry.846846420" id="licensePriceHidden">
+<input type="hidden" id="phoneHidden" name="entry.567198169" value="">
+<input type="hidden" id="carNumberHidden" name="entry.336296250" value="">
+<input type="hidden" id="consentHidden" name="entry.484357262" value="" required>
+<input type="hidden" name="entry.830537506" id="licensePriceHidden">
+
 <div class="step active" id="step1">
     <div class="step-content">
         <div class="section-title">1단계 : 판매희망가 입력</div>
@@ -559,7 +546,7 @@ target="hidden_iframe">
         <div class="button-group">
             <button type="button" id="nextBtn" onclick="nextStep(1)">다음 단계로</button>
         </div>
-    </div>
+      </div>
 </div>
 
 <div class="step" id="step2">
@@ -570,7 +557,7 @@ target="hidden_iframe">
             <div class="input-field-wrapper">
                 <input type="text"
                     id="name"
-                    name="entry.322676004" 
+                                        name="entry.404085379" 
                     required
                     placeholder="성함 입력" class="data-input-field">
             </div>
