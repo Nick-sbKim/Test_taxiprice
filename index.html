@@ -73,7 +73,16 @@ box-sizing: border-box;
 background-color: #EFEBE9;
 overflow-y: auto;
 }
-.container { background-color: rgba(255, 255, 255, 0.95); padding: 0; border-radius: 15px; width: 100%; max-width: 500px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border: 2px solid var(--light-border-color); overflow: hidden; }
+.container { 
+    background-color: rgba(255, 255, 255, 0.95); 
+    padding: 0; 
+    border-radius: 15px; 
+    width: 100%; 
+    max-width: 500px; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); 
+    border: 2px solid var(--light-border-color); 
+    overflow: hidden; 
+}
 .header-content { padding: 25px var(--content-padding) 10px; }
 h1 {
 text-align: center;
@@ -467,10 +476,12 @@ margin-bottom: 0;
 
 /* 모바일 반응형 디자인 (유지) */
 @media (max-width: var(--mobile-breakpoint)) {
+/* 세로 배열로 변경 */
 .input-group:not(.stack-label-group) { flex-direction: column; align-items: flex-start; }
 .input-group:not(.stack-label-group) label { width: 100%; margin-bottom: 5px; line-height: 1.2; height: auto; padding: 0; }
 .input-group:not(.stack-label-group) .input-field-wrapper { width: 100%; }
 
+/* 차량번호 입력 필드 최적화 */
 .car-number-split-wrapper { flex-wrap: nowrap; gap: 5px; }
 .car-number-split-wrapper .fixed-unit-button { width: 45px; font-size: var(--base-font-size); flex-grow: 0; }
 #carNumPart1 { max-width: none; flex: 2.5; }
@@ -478,23 +489,18 @@ margin-bottom: 0;
 #carNumPart2 { max-width: none; flex: 4; }
 .split-unit-wrapper input { min-width: 70px; }
 
-/* 면허 희망가격 모바일 최적화 */
-.unified-price-input { max-width: 100%; }
-.unified-price-input .price-fixed-text,
-.unified-price-input .price-unit-text { font-size: 1.0em; padding: 0 3px; }
-.unified-price-input input { font-size: 1.1em; }
 /* 모바일 포커스 시 돋보기 크기 조정 */
 .data-input-field:focus {
-font-size: 1.1em !important;
-height: var(--base-field-height) !important;
-line-height: var(--base-field-height) !important;
+    font-size: 1.1em !important;
+    height: var(--base-field-height) !important;
+    line-height: var(--base-field-height) !important;
 }
 .unified-price-input input:focus {
-font-size: 1.2em !important;
+    font-size: 1.2em !important;
 }
-/* ✅ 모바일에서 완료된 필드 폰트 크기 조정 */
+/* 모바일에서 완료된 필드 폰트 크기 조정 */
 .data-input-field.completed {
-font-size: 1.1em !important;
+    font-size: 1.1em !important;
 }
 }
 </style>
